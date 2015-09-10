@@ -1,6 +1,6 @@
 # dotatrivia.com
 
-Source for dotatrivia.com.
+Source for [dotatrivia.com](dotatrivia.com).
 
 Features leaderboards and live chat log.
 
