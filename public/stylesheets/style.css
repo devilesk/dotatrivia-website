@@ -1,0 +1,54 @@
+body {
+  padding: 2em 4em;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.navbar, .paginationcontrol, .search-form {
+  margin-bottom: 10px;
+}
+
+.navbar .navlink, .paginationcontrol .page {
+  margin: 0px 5px;
+}
+
+.navbar .navlink {
+  text-decoration: none;
+}
+
+.navbar .navlink.active {
+  text-decoration: underline;
+  background-color: yellow;
+}
+
+table {
+  border-collapse: collapse;
+  min-width: 400px;
+}
+
+td {
+  padding: 5px;
+  padding-top: 10px;
+  border-top: 1px solid black;
+}
+
+th {
+  padding: 5px;
+}
+
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}

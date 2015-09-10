@@ -1,0 +1,38 @@
+extends layout
+
+block content
+
+  block header
+    h1= title
+    div.navbar
+      span Top Scores
+      - if(time == 'all')
+        a.navlink.active(href="/leaderboard/all/1") All
+      - else
+        a.navlink(href="/leaderboard/all/1") All
+      - if(time == 'hour')
+        a.navlink.active(href="/leaderboard/hour/1") Hour
+      - else
+        a.navlink(href="/leaderboard/hour/1") Hour
+      - if(time == 'day')
+        a.navlink.active(href="/leaderboard/day/1") Day
+      - else
+        a.navlink(href="/leaderboard/day/1") Day
+      - if(time == 'week')
+        a.navlink.active(href="/leaderboard/week/1") Week
+      - else
+        a.navlink(href="/leaderboard/week/1") Week
+  
+  block search
+    div.search-form
+      span Search by name or friend ID:
+      form(name="search", action="/leaderboard/search", method="get")
+        input(type="text", name="q", value="#{query||''}")
+        input(type="hidden", name="t", value="#{time}")
+        input(type="submit", value="Search")
+        
+  block main
+  
+block prepend footer
+  p
+    a(href="/") Home

@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p A bot that asks Dota 2 trivia questions in the in-game chat channel, Trivia.
+  hr
+  h2 Commands
+  ul
+    li !top all|day|hour|week - List of top 10 points over given time period.
+    li !stats - Individual stats
+    li !question - Makes the bot repeat the current question
+    li !report <message> - Sends a message to the bot owner
+  p You can only issue one command to the bot per minute.

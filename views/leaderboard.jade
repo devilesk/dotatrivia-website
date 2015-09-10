@@ -1,0 +1,38 @@
+extends leaderboard-layout
+
+block main
+  - var p = pagination
+  .paginationcontrol
+    - if(parseInt(p.current) > 1)
+      a.page.page-first(href="/leaderboard/#{time}/1") &lt;&lt;
+      a.page.page-prev(href="/leaderboard/#{time}/#{(parseInt(p.current) - 1)!=1?(parseInt(p.current) - 1): 1}") &lt;
+    - else
+      span.page.disabled.page-first <<
+      span.page.disabled.page-prev <
+    - for(var i = parseInt(p.current) - 2; i <= parseInt(p.current) + 2; ++i)
+      - if (i <= parseInt(p.total) && i > 0)
+        - if (i !== parseInt(p.current))
+          a.page(href="/leaderboard/#{time}/#{i!=1 ? i: 1}")=i
+        - else
+          span.page.current=i
+    - if(parseInt(p.current) < parseInt(p.total))
+      a.page.page-next(href="/leaderboard/#{time}/#{parseInt(p.current) + 1}") &gt;
+      a.page.page-last(href="/leaderboard/#{time}/#{parseInt(p.total)}") &gt;&gt;
+    - else
+      span.page.disabled.page-next &gt;
+      span.page.disabled.page-last &gt;&gt;
+    
+  table
+    thead
+      tr
+        th.text-center Rank
+        th.text-left Name
+        th.text-right Points
+    tbody
+      each user, i in userlist
+        tr
+          td.text-center= (parseInt(p.pageSize) * parseInt(p.current-1) + (i+1))
+          td= user.personaName
+          td.text-right= user.points
+          
+  p Total: #{num_records}

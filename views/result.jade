@@ -1,0 +1,15 @@
+extends leaderboard-layout
+
+block main
+  table
+    thead
+      tr
+        th.text-center Rank
+        th.text-left Name
+        th.text-right Points
+    tbody
+      each user, i in results
+        tr
+          td.text-center= user.count
+          td= user.personaName
+          td.text-right= user.points
