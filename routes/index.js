@@ -32,17 +32,15 @@ router.get('/leaderboard/search', function (req, res) {
             res.render('result', { title: 'Leaderboard Search', description: "Search for: " + q, time: req.query.t, query: q, results: [] });
         }
         else {
-            for (var i = 0; i < docs.length; i++) {
-                (function (j) {
-                    collection.count({ points: { $gt: docs[j].points } },function (e, count){
-                        docs[j].count = count + 1;
-                        counter++;
-                        if (counter == docs.length) {
-                            res.render('result', { title: 'Leaderboard Search', description: "Search for: " + q, time: req.query.t, query: q, results: docs });
-                        }
-                    });
-                })(i);
-            }     
+            docs.forEach(function (doc, j) {
+                collection.count({ points: { $gt: doc.points } }, function (e, count){
+                    doc.count = count + 1;
+                    counter++;
+                    if (counter == docs.length) {
+                        res.render('result', { title: 'Leaderboard Search', description: "Search for: " + q, time: req.query.t, query: q, results: docs });
+                    }
+                });
+            });
         }
 
     });
