@@ -1,0 +1,10 @@
+{
+    "databaseAddress": "",
+    "databaseName": "",
+    "socketIOPort": 5000,
+    "chatCollection": "",
+    "userCollection": "",
+    "scoresHourlyCollection": "",
+    "scoresDailyCollection": "",
+    "scoresWeeklyCollection": ""
+}
