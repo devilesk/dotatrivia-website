@@ -1,7 +1,16 @@
 {
-  "name": "triviasite",
-  "version": "0.0.0",
+  "name": "dotatrivia-website",
+  "version": "1.0.0",
   "private": true,
+  "description": "Dota 2 Trivia Bot Stats Website",
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devilesk/dotatrivia-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devilesk/dotatrivia-website/issues"
+  },
+  "homepage": "https://github.com/devilesk/dotatrivia-website#readme",
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -11,9 +20,10 @@
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "jade": "~1.11.0",
+    "mongodb": "*",
+    "monk": "*",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
-    "mongodb": "*",
-    "monk": "*"
+    "socket.io": "^1.4.8"
   }
 }
