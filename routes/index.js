@@ -96,9 +96,9 @@ router.get('/leaderboard/:time/:page', function (req, res) {
       }
       if (collectionName != null) {
         var collection = db.get(collectionName);
-        collection.col.distinct("accountId", function (err, items) {
+        collection.distinct("accountId", function (err, items) {
           var maxPages = Math.ceil(items.length / pageSize);
-          collection.col.aggregate([{$group:{_id: { accountId: "$accountId" }, points: { $sum: "$points" }, count: { $sum: 1 }, personaName: { $min: "$personaName" } }}, {$sort: {points: -1}}, { $skip : pageSize * (page - 1) }, { $limit : pageSize }], function(err, items) {
+          collection.aggregate([{$group:{_id: { accountId: "$accountId" }, points: { $sum: "$points" }, count: { $sum: 1 }, personaName: { $min: "$personaName" } }}, {$sort: {points: -1}}, { $skip : pageSize * (page - 1) }, { $limit : pageSize }], function(err, items) {
               if (!err) {
                 res.render('leaderboard', {
                     "time": time,
