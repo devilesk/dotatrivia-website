@@ -32,7 +32,7 @@ block main
       each user, i in userlist
         tr
           td.text-center= (parseInt(p.pageSize) * parseInt(p.current-1) + (i+1))
-          td= user.personaName
+          td= user.persona_name
           td.text-right= user.points
           
   p Total: #{num_records}

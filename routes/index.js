@@ -12,7 +12,7 @@ router.get('/chat', function (req, res) {
     var collection = db.get(config.chatCollection);
     var channel = (req.query.channel || 'Trivia').toString();
     var query = {channel: channel};
-    var filter = {sort: { createdAt: 1 }, fields: { createdAt: 1, message: 1, personaName: 1, _id: 0 } };
+    var filter = {sort: { createdAt: 1 }, fields: { createdAt: 1, message: 1, persona_name: 1, _id: 0 } };
     collection.find(query, filter, function (e, docs) {
         res.render('chatlog', {title: 'Chat Log', description: "Channel: " + channel, data: docs});
     });
@@ -22,9 +22,9 @@ router.get('/leaderboard/search', function (req, res) {
     var db = req.db;
     var collection = db.get(config.userCollection);
     var q = (req.query.q || '').toString();
-    var accountId = parseInt(q);
-    var query = {personaName: q}
-    if (!isNaN(accountId)) query = { $or: [ query, {accountId: accountId} ] };
+    var account_id = parseInt(q);
+    var query = {persona_name: q}
+    if (!isNaN(account_id)) query = { $or: [ query, {account_id: account_id} ] };
     var filter = {sort: {points: -1}};
     var counter = 0;
     collection.find(query, filter, function (e, docs){
@@ -96,9 +96,9 @@ router.get('/leaderboard/:time/:page', function (req, res) {
       }
       if (collectionName != null) {
         var collection = db.get(collectionName);
-        collection.distinct("accountId", function (err, items) {
+        collection.distinct("account_id", function (err, items) {
           var maxPages = Math.ceil(items.length / pageSize);
-          collection.aggregate([{$group:{_id: { accountId: "$accountId" }, points: { $sum: "$points" }, count: { $sum: 1 }, personaName: { $min: "$personaName" } }}, {$sort: {points: -1}}, { $skip : pageSize * (page - 1) }, { $limit : pageSize }], function(err, items) {
+          collection.aggregate([{$group:{_id: { account_id: "$account_id" }, points: { $sum: "$points" }, count: { $sum: 1 }, persona_name: { $min: "$persona_name" } }}, {$sort: {points: -1}}, { $skip : pageSize * (page - 1) }, { $limit : pageSize }], function(err, items) {
               if (!err) {
                 res.render('leaderboard', {
                     "time": time,

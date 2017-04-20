@@ -27,9 +27,9 @@ $(function () {
             var c = new Date(d.createdAt)
             if (last_count.valueOf() < c.valueOf()) {
                 var $tr = $('<tr>');
-                var c_str = lPad(c.getHours().toString()) + ':' + lPad(c.getMinutes().toString()) + ':' + lPad(c.getSeconds().toString());
+                var c_str = lPad(c.getUTCHours().toString()) + ':' + lPad(c.getUTCMinutes().toString()) + ':' + lPad(c.getUTCSeconds().toString());
                 $tr.append($('<td class="text-right">' + c_str + '</td>'));
-                $tr.append($('<td class="text-right bold">' + d.personaName + '</td>'));
+                $tr.append($('<td class="text-right bold">' + d.persona_name + '</td>'));
                 $tr.append($('<td class="text-left">' + d.message + '</td>'));
                 $('table tbody').append($tr);
             }

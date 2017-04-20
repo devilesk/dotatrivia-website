@@ -19,7 +19,7 @@ block content
       each message, i in data
         tr
           td.text-right= lPad(message.createdAt.getHours().toString()) + ':' + lPad(message.createdAt.getMinutes().toString()) + ':' + lPad(message.createdAt.getSeconds().toString())
-          td.text-right.bold= message.personaName
+          td.text-right.bold= message.persona_name
           td.text-left= message.message
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
   script(src='javascripts/socket.io.js')

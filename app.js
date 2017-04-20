@@ -79,7 +79,7 @@ var collection = db.get(config.chatCollection),
 var pollingLoop = function(channel) {
     var query = {"channel": channel};
     if (last_count) query.createdAt = { $gt : last_count};
-    collection.find(query, { sort: { createdAt: 1 }, fields: { createdAt: 1, message: 1, personaName: 1, _id: 0 } }, function (e, docs) {
+    collection.find(query, { sort: { createdAt: 1 }, fields: { createdAt: 1, message: 1, persona_name: 1, _id: 0 } }, function (e, docs) {
         var data = [];
         //console.log(docs.length, last_count);
         if (e) {
